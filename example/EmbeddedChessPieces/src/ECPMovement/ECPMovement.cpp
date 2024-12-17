@@ -1,6 +1,6 @@
 #include "ECPMovement.h"
 
-ECPMovement::ECPMovement(Dezibot &d, uint mc = DEFAULT_MOVEMENT_CALIBRATION)
+ECPMovement::ECPMovement(Dezibot &d, uint mc)
     : dezibot(d),
       ecpColorDetection(ECPColorDetection(d)),
       movementCalibration(mc) {};

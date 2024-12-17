@@ -13,7 +13,7 @@
 #define ECPMovement_h
 
 #include <Dezibot.h>
-#include <EmbeddedChessPieces.h>
+#include <ECPColorDetection/ECPColorDetection.h>
 
 #define FORWARD_TIME 750
 #define MOVEMENT_BREAK 375
@@ -28,7 +28,7 @@ public:
      * @param d Dezibot to move
      * @param mc Base value to calibrate the dezibot's movement (default 3900)
      */
-    ECPMovement(Dezibot &d, uint mc);
+    ECPMovement(Dezibot &d, uint mc = DEFAULT_MOVEMENT_CALIBRATION);
 
     /**
      * @brief Move chess piece given number of fields forward.
