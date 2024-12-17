@@ -18,7 +18,11 @@
 #define FORWARD_TIME 750
 #define MOVEMENT_BREAK 375
 
+#define ROTATION_SPEED 8192
+
 #define DEFAULT_MOVEMENT_CALIBRATION 3900
+#define DEFAULT_ROTATION_TIME_LEFT 2650
+#define DEFAULT_ROTATION_TIME_RIGHT 2875
 
 class ECPMovement {
 public:
@@ -27,8 +31,15 @@ public:
      * 
      * @param d Dezibot to move
      * @param mc Base value to calibrate the dezibot's movement (default 3900)
+     * @param rtl Time needed for a 90 degree rotation anticlockwise (default 2650)
+     * @param rtr Time needed for a 90 degree rotation clockwise (default 2875)
      */
-    ECPMovement(Dezibot &d, uint mc);
+    ECPMovement(
+        Dezibot &d, 
+        uint mc = DEFAULT_MOVEMENT_CALIBRATION, 
+        uint rtl = DEFAULT_ROTATION_TIME_LEFT, 
+        uint rtr = DEFAULT_ROTATION_TIME_RIGHT
+    );
 
     /**
      * @brief Move chess piece given number of fields forward.
@@ -60,6 +71,18 @@ protected:
      * If the robot is just jumping up and down but not forward, try a lower value.
      */
     const uint movementCalibration;
+
+    /**
+     * @brief Time the dezibot needs for a 90 degree rotation anticlockwise.
+     * 
+     */
+    const uint rotationTimeLeft;
+
+    /**
+     * @brief Time the dezibot needs for a 90 degree rotation clockwise.
+     * 
+     */
+    const uint rotationTimeRight;
 
 private:
     /**
