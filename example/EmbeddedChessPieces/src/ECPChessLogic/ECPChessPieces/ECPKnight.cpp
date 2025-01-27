@@ -29,3 +29,16 @@ bool ECPKnight::isMoveValid(ECPChessField newField) {
     
     return false;
 };
+
+void ECPKnight::drawFigureToDisplay() {
+    dezibot.display.clear();
+    
+    dezibot.display.println(" _   \\\\\\\\\\\\\\    ");
+    dezibot.display.println("| n___\\\\\\\\\\\\\\   ");
+    dezibot.display.println("| |     \\\\\\\\\\>  ");
+    dezibot.display.println("| |          |> ");
+    dezibot.display.println("| |_____|  @ |  ");
+    dezibot.display.println("|_u     )   /   ");
+    dezibot.display.println("       (   /    ");
+    dezibot.display.println("       `__/     ");
+}

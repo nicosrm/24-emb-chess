@@ -22,3 +22,16 @@ bool ECPBishop::isMoveValid(ECPChessField newField) {
 
     return false;
 };
+
+void ECPBishop::drawFigureToDisplay() {
+    dezibot.display.clear();
+    
+    dezibot.display.println(" _        __    ");
+    dezibot.display.println("| n_____ /  \\   ");
+    dezibot.display.println("| |     ||   \\  ");
+    dezibot.display.println("| |     ||  + |O");
+    dezibot.display.println("| |_____||   /  ");
+    dezibot.display.println("|_u      \\__/   ");
+    dezibot.display.println("                ");
+    dezibot.display.println("                ");
+}

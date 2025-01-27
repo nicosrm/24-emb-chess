@@ -59,3 +59,16 @@ bool ECPPawn::isMoveValid(ECPChessField newField) {
 
     return false;
 };
+
+void ECPPawn::drawFigureToDisplay() {
+    dezibot.display.clear();
+    
+    dezibot.display.println("                ");
+    dezibot.display.println(" _     __       ");
+    dezibot.display.println("| n___/  \\      ");
+    dezibot.display.println("| |  H    |     ");
+    dezibot.display.println("| |__H    |     ");
+    dezibot.display.println("|_u   \\__/      ");
+    dezibot.display.println("                ");
+    dezibot.display.println("                ");
+}
