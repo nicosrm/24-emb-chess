@@ -11,6 +11,10 @@ ECPMovement::ECPMovement(
     rotationTimeLeft(rotationTimeLeft),
     rotationTimeRight(rotationTimeRight) {};
 
+ECPColorDetection* ECPMovement::getECPColorDetection() {
+    return &ecpColorDetection;
+}
+
 void ECPMovement::moveForward(int timeMovement, int timeBreak) {
     dezibot.motion.move(0, movementCalibration);
     delay(timeMovement);
