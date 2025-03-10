@@ -48,16 +48,16 @@ void ECPMovement::turnLeft(
     ECPChessField currentField, 
     ECPDirection intendedDirection
 ) {
-    const bool hasStartedOnWhite = ecpColorDetection.isWhiteField();
+    const int startColor = ecpColorDetection.getFieldColor();
 
     dezibot.motion.right.setSpeed(ROTATION_SPEED);
     delay(rotationTimeLeft);
     dezibot.motion.right.setSpeed(0);
     delay(MOVEMENT_BREAK);
     
-    bool isCurrentlyOnWhite = ecpColorDetection.isWhiteField();
-    if (isCurrentlyOnWhite != hasStartedOnWhite) {
-        displayRotionCorrectionRequest(currentField, intendedDirection);
+    const int currentColor = ecpColorDetection.getFieldColor();
+    if (currentColor != startColor) {
+        displayRotationCorrectionRequest(currentField, intendedDirection);
     }
 };
 
@@ -65,20 +65,20 @@ void ECPMovement::turnRight(
     ECPChessField currentField, 
     ECPDirection intendedDirection
 ) {
-    const bool hasStartedOnWhite = ecpColorDetection.isWhiteField();
+    const int startColor = ecpColorDetection.getFieldColor();
 
     dezibot.motion.left.setSpeed(ROTATION_SPEED);
     delay(rotationTimeRight);
     dezibot.motion.left.setSpeed(0);
     delay(MOVEMENT_BREAK);
 
-    bool isCurrentlyOnWhite = ecpColorDetection.isWhiteField();
-    if (isCurrentlyOnWhite != hasStartedOnWhite) {
-        displayRotionCorrectionRequest(currentField, intendedDirection);
+    const int currentColor = ecpColorDetection.getFieldColor();
+    if (currentColor != startColor) {
+        displayRotationCorrectionRequest(currentField, intendedDirection);
     }
 };
 
-void ECPMovement::displayRotionCorrectionRequest(
+void ECPMovement::displayRotationCorrectionRequest(
     ECPChessField currentField, 
     ECPDirection intendedDirection
 ) {
