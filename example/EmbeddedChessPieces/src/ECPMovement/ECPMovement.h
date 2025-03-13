@@ -26,7 +26,9 @@
 #define DEFAULT_ROTATION_TIME_LEFT 2650
 #define DEFAULT_ROTATION_TIME_RIGHT 2875
 
-#define ROTATION_CORRECTION_TIME 10000
+#define MANUEL_CORRECTION_TIME 10000
+
+#define MAX_ITERATIONS 20
 
 class ECPMovement {
 public:
@@ -49,8 +51,14 @@ public:
      * @brief Move chess piece given number of fields forward.
      * 
      * @param numberOfFields Number of fields the dezibot should move forward
+     * @param intendedField Field of the dezibot
+     * @param intendedDirection Direction the dezibot should look at after movement
      */
-    void move(uint numberOfFields);
+    void move(
+        uint numberOfFields, 
+        ECPChessField intendedField, 
+        ECPDirection intendedDirection
+    );
 
     /**
      * @brief Turn 90 degrees left.
@@ -115,8 +123,11 @@ private:
      * 
      * Default interval of movement before checking the field color
      * is defined in MOVEMENT_TIME and MOVEMENT_BREAK.
+     * 
+     * @return true if fieldColors indicate successful movement
+     * @return false if fieldColors indicate faulty movement
      */
-    void moveToNextField();
+    bool moveToNextField();
 
     /**
      * Print request to correct dezibot on the board after faulty rotation
@@ -128,6 +139,19 @@ private:
      */
     void displayRotationCorrectionRequest(
         ECPChessField currentField, 
+        ECPDirection intendedDirection
+    );
+
+    /**
+     * Print request to correct dezibot on the board after faulty forward movement
+     * 
+     * The user has 10 seconds to correct the position and direction of the dezibot
+     * 
+     * @param intendedField Field of the dezibot
+     * @param intendedDirection Direction the dezibot should look at after movement
+     */
+    void displayForwardMovementCorrectionRequest(
+        ECPChessField intendedField, 
         ECPDirection intendedDirection
     );
 };
